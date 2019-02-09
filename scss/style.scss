@@ -47,5 +47,29 @@ h2{
   font: 1rem $font-stack;
 }
 .axis path{
-  fill : None;
+  fill : none;
+}
+
+#map{
+  margin-bottom: 2rem;
+}
+text{
+  pointer-event : none;
+}
+.states{
+  fill : $gray;
+}
+.states :hover{
+  stroke : $gray;
+  stroke-width : 2px;
+}
+.place,
+.place-label{
+  fill: $place-fill;
+}
+
+.d3-tip{
+  padding :10px;
+  background: $transparent;
+  color: $tip-color;
 }
