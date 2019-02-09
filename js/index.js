@@ -102,3 +102,27 @@ var w = 250,
        .attr("transform", "translate(10,15)")
        .call(yAxis);
 }
+
+//Adding animation
+var timeline = new TimelineLite(),
+    intro = ("#intro"),
+    map = ("#map"),
+    legend = ("#legend"),
+    foofer = ("#footer");
+
+timeline
+  .from(intro, 1,{
+        scale: .45,
+        ease : Power1.easeOut
+        })
+  .from(map, 1,{
+        y:'90%',
+        autoAlpha:0
+  })
+  .from(legend,1,{
+        x: 1000,
+  })
+  .from(footer,.5,{
+        scale:1,
+        autoAlpha:0
+});
