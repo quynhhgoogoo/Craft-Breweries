@@ -17,7 +17,7 @@ var width = 800,
 		path = d3.geo.path()
 						.projection(projection),
 		tip = d3.tip()
-						.attr('class', 'd3-tip')
+						.attr("class", "d3-tip")
 						.offset([-15, 0])
 						.html(function(d) {
 		return "<strong>" + d.properties.name + " - </strong><span>" + data.get(d.properties.abbr) + " breweries per capital</span>"
@@ -45,22 +45,60 @@ function ready(error, d) {
     .style("fill", function(d) {
       return color(data.get(d.properties.abbr))
     })
-    .attr("d", path);
+    .attr("d", path)
+      .on("mouseover", tip.show)
+      .on("mouseout", tip.hide);
   
   // Building State Labels
-  svg.selectAll('.place-label')
+  svg.selectAll(".place-label")
      .data(d.features)
      .enter()
-     .append('text')
-     .attr('class', 'place-label')
-     .attr('transform', function(d){
+     .append("text")
+     .attr("class", "place-label")
+     .attr("transform", function(d){
       return 'translate('+path.centroid(d)+')';
   })
-     .attr('dy', '.5em')
-     .attr('dx', '-.7em')
+     .attr("dy", ".5em")
+     .attr("dx", "-.7em")
      .text(function(d){
       return d.properties.abbr;
-  })
-}
+  });
+  svg.call(tip);
 
-//Building information
+
+//Building side information
+var w = 250,
+    h = 40,
+    key = d3.select("#legend")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h),
+    legend = key.append("defs")
+                .append("svg:linearGradient")
+                .attr("id", "gradient")
+                .attr("y1", "100%")
+                .attr("y2", "100%")
+                .attr("x1", "100%")
+                .attr("x2", "0%")
+    legend.append("stop")
+          .attr("offset", "0%")
+          .attr("stop-color", colorScale[0])
+    legend.append("stop")
+           .attr("offset", "100%")
+           .attr("stop-color", colorScale[1])
+    key.append("rect")
+       .attr("width", w-5)
+       .attr("height", h-20)
+       .style("fill", "url(#gradient)")
+       .attr("transform", "translate(0,0)"),
+    y = d3.scale.linear()
+          .range([0,250])
+          .domain([0,7]),
+    yAxis=d3.svg.axis()
+            .scale(y)
+            .ticks(4);
+    key.append("g")
+       .attr("class", "y axis")
+       .attr("transform", "translate(10,15)")
+       .call(yAxis);
+}

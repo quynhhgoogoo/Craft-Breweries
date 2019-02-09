@@ -36,3 +36,16 @@ h2{
   position: absolute;
   bottom: 0;
 }
+
+#legend{
+  position: absolute;
+  right : 0;
+  top : 150px;
+}
+
+#legend p{
+  font: 1rem $font-stack;
+}
+.axis path{
+  fill : None;
+}
