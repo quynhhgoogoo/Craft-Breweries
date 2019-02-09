@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css?family=Lobster");
+body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#intro {
+  width: 100%;
+  border-bottom: 2px solid #333;
+}
+
+h1 {
+  font: bold 3rem "Lobster", Helvetica, san-serif;
+}
+
+h2 {
+  font: 2rem "Lobster", Helvetica, san-serif;
+  margin: 1rem auto 0;
+}
+
+#footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}

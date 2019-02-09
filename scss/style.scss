@@ -1,0 +1,38 @@
+//Google Fonr
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+$w: 100%;
+$h: 100%;
+$font-stack: 'Lobster', Helvetica, san-serif;
+
+$place-fill :#363636;
+$tip-color: #e2e3e3;
+$gray: #333;
+$transparent: rgba(0,0,0,0.7);
+
+body{
+  width: $w;
+  height: $h;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#intro{
+  width: $w;
+  border-bottom: 2px solid $gray;
+}
+
+h1{
+  font: bold 3rem $font-stack;
+}
+h2{
+  font: 2rem $font-stack;
+  margin: 1rem auto 0;
+}
+
+#footer{
+  width: $w;
+  position: absolute;
+  bottom: 0;
+}
